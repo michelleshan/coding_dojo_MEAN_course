@@ -1,0 +1,15 @@
+<form *ngIf='!userNameSet' (submit)='setUserName()'> 
+  <label for='name'>User Name: </label>
+  <input type='text' name='name' [(ngModel)]='userName'>
+  <div>
+    <input type='radio' name='color' id='red' [(ngModel)]='color' [value]='0'>Red
+    <input type='radio' name='color' id='blue' [(ngModel)]='color' [value]='1'>Blue
+    <input type='radio' name='color' id='green' [(ngModel)]='color' [value]='2'>Green
+    <input type='radio' name='color' id='purple' [(ngModel)]='color' [value]='3'>Purple
+  </div>
+  <input type='submit' value='Enter Chat'>
+</form>
+<h1 *ngIf='userNameSet'>Welcome {{userName}}</h1>
+
+<app-chatroom [color]='color' [userName]='userName' *ngIf='userNameSet'></app-chatroom>
+<router-outlet></router-outlet>

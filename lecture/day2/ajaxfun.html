@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX is Fun</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class='yellow'>
+        Get Pokemon
+    </div>
+    <table id='table'>
+    </table>
+    <div id='pokemon'>
+        <h1>These are the pokemon</h1>
+    </div>
+    <style>
+        showPoke{
+            display: inline-block;
+            max-width: 200px;
+            margin: 20;
+            border: 1px black;
+        }
+    </style>
+    <script>
+        $('#pokemon').hide()
+        $('.yellow').click(function(){
+            $.get('https://pokeapi.co/api/v2/pokemon-color',function(data){
+                // console.log(data)
+                // $('.yellow').text(data.name)
+                // for (var i=0; i < data.results.length; i++){
+                //     console.log(data.results[i]) 
+                let str = ""
+                for (let res of data.results){
+                    str += "<tr><td>"+res.name+"</td><td><button url='"+res.url+"'>Get more</button></td></tr>"
+                }
+                $('#table').html(str)
+                $('table button').click(function(){
+                    // console.log($(this))
+                    $.get($(this).attr('url'),function(data){
+                        console.log(data.pokemon_species)
+                        $('#pokemon').show()
+                        for (let res of data.pokemon_species){
+                                let url = ""
+                            // div = document.createElement('div')
+                                $.get('https://pokeapi.co/api/v2/pokemon/'+res.name, function(data){
+                                    url = data.sprites.front_default
+                                    $('h1').after('<div class='showPoke'>'+res.name+'<img src='+url+'></img=="'</div>)
+                                })
+                            }
+                    })
+                })
+            })
+        })
+    </script>
+</body>
+</html>

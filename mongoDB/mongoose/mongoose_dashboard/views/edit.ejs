@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chimp Form</title>
+    <link rel='stylesheet' href='/style.css'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class='container'>
+        <h1>Edit a Chimpanzee</h1>
+        <a href='/chimpanzees/<%= chimp._id %>'>Back to profile</a>
+        <form action='/chimpanzees/<%= chimp._id %>' method='POST'>
+            <div class='row'>
+                <div class='col-md'>
+                    <p><label for='name'>Name: </label></p>
+                    <p><label for='age'>Age: </label></p>
+                    <p><label for='sex'>Sex: </label></p>
+                    <p><label for='food'>Favorite food: </label></p>
+                </div>
+                <div class='col-md'>
+                    <p><input type='text' name='name' value='<%= chimp.name %>'></p>
+                    <p><input type='number' name='age' value='<%= chimp.age %>'></p>
+                    <p><select name='sex'>
+                        <option value='female'>F</option>
+                        <option value='male'>M</option>
+                        </select></p>
+                    <p><input type='text' name='fav_food' value='<%= chimp.fav_food %>'></p>
+                </div>
+            </div>
+            <button type='submit' class='btn btn-primary'>Submit!</button>
+        </form>
+    </div>
+</body>
+</html>

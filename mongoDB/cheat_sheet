@@ -1,0 +1,154 @@
+*Terminal commands:
+    To connect to the MongoDB database: mongo
+    Shutting down if mongod window closed w/o exiting the shell: ps -ax | grep mongo
+    Take note of the number on the left-hand side of the row labeled 'mongo' (or 'sudo mongo'). This is the PID (process ID) that Mongo is running with. Use that number as follows (without the arrow brackets of course):  sudo kill <enter PID here> 
+    npm i body-parser
+    npm i express-flash (must have session to use express flash messages)
+*Mongo
+    -stores documents
+    -JSON objects
+
+    USERS TABLE => COLLECTION from mongo
+    1 bob boberson => DOCUMENT from mongo
+
+    mongodb collections
+    USERS
+    {_id: 1,
+     f_name: 'bob',
+     l_name: 'boberson'}
+
+    {_id: 2,
+     f_name: 'carl',
+     l_name: 'carlerson',
+     pet: 'evelyn'}
+
+     {_id: 3,
+     color: 'red'}
+
+*Server.js
+    app.get('/users/:id', (req,res) => {
+    User.findOne({_id: req.params.id}) ***** User.find returns the whole array and User.findOne returns just one object in the array!
+        .then(data => {
+            res.json(data)
+        })
+        .catch(error => {
+            console.log('Error saving user:', err)
+        })
+    })
+
+*Common Mongoose Commands
+    *Finding all users
+        // ...retrieve an array of all documents in the User collection
+        User.find()
+            .then(users => {
+                // logic with users results
+            })
+            .catch(err => res.json(err));
+    *Finding all users based on a requirement
+        // ...retrieve an array of documents matching the query object criteria
+        User.find({name:'Jessica'}) 
+            .then(usersNamedJessica => {
+                // logic with usersNamedJessica results
+            })
+            .catch(err => res.json(err));
+    *Finding one user
+        // ...retrieve 1 document (the first record found) matching the query object criteria
+        User.findOne({_id: '5d34d361db64c9267ed91f73'})
+            .then(user => {
+                // logic with single user object result
+            })
+            .catch(err => res.json(err));
+    *Create a user
+        // ...create a new document to store in the User collection and save it to the DB.
+        const bob = new User();
+        bob.name = 'Bob Ross';
+        bob.age = 42;
+        bob.save()
+            .then(newUser => {
+                // logic with succesfully saved newUser object
+            })
+            .catch(err => res.json(err));
+        // If there's an error and the record was not saved, this (err) will contain validation errors.
+    *Create a user (simplified)
+        // ...create a new document to store in the User collection and save it to the DB.
+        const userData = req.body;
+        User.create(userData)
+            .then(newUser => {
+                // logic with succesfully saved newUser object
+            })
+            .catch(err => res.json(err));
+        // If there's an error and the record was not saved, this (err) will contain validation errors.
+    *Delete all users
+        // ...delete all documents of the User collection
+        User.remove()
+            .then(deletedUsers => {
+                // logic (if any) with successfully removed deletedUsers object
+            })
+            .catch(err => res.json(err));
+    *Delete one user
+        // ...delete 1 document that matches the query object criteria
+        User.remove({_id: '5d34d361db64c9267ed91f73'})
+            .then(deletedUser => {
+                // logic (if any) with successfully removed deletedUser object
+            })
+            .catch(err => res.json(err));
+    *Update one record
+        // ...update 1 document that matches the query object criteria
+        User.updateOne({name:'Bob Ross'}, {
+            name: 'Ross Bob',
+            $push: {pets: {name: 'Sprinkles', type: 'Chubby Unicorn' }}
+        })
+            .then(result => {
+                // logic with result -- note this will be the original object by default!
+            })
+            .catch(err => res.json(err));
+    *An alternative way to update a record
+        User.findOne({name: 'Bob Ross'})
+        .then(user => {
+            user.name = 'Rob Boss';
+            user.pets.push({name: 'Sprinkles', type: 'Chubby Unicorn'});
+            return user.save();
+        })
+        .then(saveResult => res.json(saveResult))
+        .catch(err => res.json(err));
+    *Validate for uniqueness before creating new DB entry
+        User.find({name: req.body.name})
+        .then(user => {
+            if (user.length > 0) {
+                return Promise.reject('Error Message Goes Here');
+            }
+            return User.create(req.body);
+        })
+        .then(saveResult => res.json(saveResult))
+        .catch(err => res.json(err));
+    *Sort in descending order
+        User.find().sort({created_at:-1})
+*Validations
+    const UserSchema = new mongoose.Schema({
+        first_name:  { type: String, required: true, minlength: 6},
+        last_name: { type: String, required: true, maxlength: 20 },
+        age: { type: Number, min: 1, max: 150 },
+        email: { type: String, required: true }
+    }, {timestamps: true });
+
+*Displaying Validation Errors
+    ...  // set up other middleware, such as session
+    const flash = require('express-flash');
+    app.use(flash());
+    app.post('/users', (req, res) => {
+        const user = new User(req.body);
+        user.save()
+            .then(() => res.redirect('/'))
+            .catch(err => {
+                console.log("We have an error!", err);
+                // adjust the code below as needed to create a flash message with the tag and content you would like
+                for (var key in err.errors) {
+                    req.flash('registration', err.errors[key].message);
+                }
+                res.redirect('/');
+            });
+    });
+
+
+
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeffrey</title>
+</head>
+<body>
+    <h1>Details Page for <%= context.name %></h1>
+    <img src="<%= context.pic %>" alt='profile pic'>
+    <div class='info'>
+        <p>Favorite food: <%= context.food %></p>
+        <p>Age: <%= context.age %> </p>
+        <p>Sleeping spots:
+            <ul>
+                <% for (var spot of spots) { %>
+                    <li><%= spot %></li>
+                <% } %>
+            </ul>
+        </p>
+    </div>
+</body>
+</html>

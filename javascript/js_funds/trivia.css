@@ -1,0 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+.container{
+    width: 900px;
+    margin: auto;
+}
+
+h3{
+    background-color: rgb(243, 243, 167);
+    vertical-align: baseline;
+}
+
+.col{
+    display: inline-block;
+}
+
+.main .row{
+    border: 1px dotted red;
+    min-height: 160px;
+    margin: 20px 20px;
+}
+
+.main .col{
+    font-size: 20px;
+    padding: 60px 20px;
+    border: 2px solid black;
+    box-shadow: 5px 5px rgb(65, 64, 64);
+    min-width: 150px;
+    border-radius: 10px 10px;
+    background-color: rgb(65, 170, 211);
+    margin: 10px 10px;
+}

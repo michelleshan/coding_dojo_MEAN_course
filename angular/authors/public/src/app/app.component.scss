@@ -1,0 +1,19 @@
+table{
+    border: 1px solid black;
+    th{
+        border: 1px solid black;
+        padding: 5px 5px;
+    }
+    td{
+        padding: 5px 5px;
+        border: 1px solid black;
+        button{
+            text-align: center;
+            margin: 0px 5px;
+        }
+    }
+}
+
+.purple{
+    color: purple;
+}

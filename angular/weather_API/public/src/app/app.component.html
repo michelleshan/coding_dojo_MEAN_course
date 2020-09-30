@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="row" id='routerlinks'>
+        <a [routerLink]="['/dallas']">Dallas, TX </a>|
+        <a [routerLink]="['/seattle']"> Seattle, WA </a>|
+        <a [routerLink]="['/chicago']"> Chicago, IL </a>|
+        <a [routerLink]="['/sanjose']"> San Jose, CA </a>|
+        <a [routerLink]="['/burbank']"> Burbank, CA </a>|
+        <a [routerLink]="['/dc']"> Washington D.C. </a>|
+    </div>
+</div>
+<router-outlet></router-outlet>

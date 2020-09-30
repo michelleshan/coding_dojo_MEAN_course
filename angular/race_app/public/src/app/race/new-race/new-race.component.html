@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <h1>New Race</h1>
+    </div>
+    <div class="row">
+        <form (submit)='createRace()'>
+            <div class="form-group">
+                <label for="date">Date</label>
+                <input type="datetime-local" class="form-control" name='date' [(ngModel)]='newRace.date'/>
+            </div>
+            <div class="form-group">
+                <label for="race_name">Name</label>
+                <input type="text" class="form-control" name='race_name' [(ngModel)]='newRace.race_name'/>
+            </div>
+            <div class="form-group">
+                <label for="distance">Distance</label>
+                <input type="number" class="form-control" name='distance' [(ngModel)]='newRace.distance'/>
+                <small id="emailHelp" class="form-text text-muted">Your email address is only used for log-in purposes.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

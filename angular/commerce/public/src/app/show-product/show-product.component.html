@@ -1,0 +1,24 @@
+<div class="subcontainer">
+    <div class="row">
+        <h1>Product Details</h1>
+    </div>
+    <div class="row" *ngIf='deleteErrors'>
+        <ul *ngFor='let message of errorMessages'>
+            <li class='purple'>Error: {{ message }}</li>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p>Name</p>
+            <p>Qty</p>
+            <p>Price</p>
+        </div>
+        <div class="col">
+            <p>{{ product.name }}</p>
+            <p>{{ product.quantity }}</p>
+            <p>${{ product.price }}</p>
+            <a href='/' class='backbutton'>BACK</a>
+            <button class='delete' (click)='onClickDelete(product)'>DELETE</button>
+        </div>
+    </div>
+</div>

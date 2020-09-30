@@ -1,0 +1,25 @@
+*Install Angular Command Line Interface (CLI)
+    npm install -g @angular/cli@^8
+
+*Create a new app
+    ng new public
+
+*Launch an Angular application
+    ng build --watch
+    
+1) Create a service
+    ng g s http
+2) Register
+    app.module.ts
+        import
+        [providers]
+3) HttpClient
+    app.module.ts
+        import
+        [imports]
+4) Dependency Injection
+    http.service.ts
+        import
+        attribute
+    app.component.ts
+        

@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.container{
+    padding: 20px 20px;
+    margin: 20px auto;
+    border: 5px solid blue;
+    border-radius: 50px 50px;
+    width: fit-content;
+    text-align: center;
+}
+
+.labels{
+    color: rgb(56, 56, 56);
+    display: inline-block;
+    vertical-align: top;
+}
+
+.inputs{
+    display: inline-block;
+}
+
+input{
+    border: 2px solid black;
+}
+
+textarea{
+    border: 2px solid black;
+}
+
+.main button{
+    display: block;
+    margin: 10px 60px;
+    /* vertical-align: bottom; */
+}
+
+.quotation{
+    text-align: justify;
+    color: rgb(99, 99, 99);
+}
+
+/* .delete{
+    text-align: right;
+} */
+
+.blue{
+    color: blue;
+    text-align: left;
+}
+
+form{
+    display: inline-block;
+}

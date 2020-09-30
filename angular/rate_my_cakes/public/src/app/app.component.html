@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <h1>{{ title }}</h1>
+  </div>
+  <div class="row">
+    <div class="col" id='cakeform'>
+      <h3>Submit a cake to be rated</h3>
+      <form (submit)='createCake()'>
+        <div class="col">
+          <p><label for='baker'>Baker Name: </label></p>
+          <p><label for='image'>Image URL: </label></p>
+        </div>
+        <div class="col">
+          <p><input type='text' name='baker' [(ngModel)]='newCake.baker'/></p>
+          <p><input type="url" name='imageURL' [(ngModel)]='newCake.imageURL'/></p>
+          <button type='submit'>Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="col" id='ratecake'>
+      <h3>Rate these cakes</h3>
+      <div class="row" *ngFor='let cake of cakes'>
+        <div class="col">
+          <img src='{{ cake.imageURL }}' alt="{{ cake.baker }}'s cake" (click)='showCake(cake)'>
+        </div>
+        <div class="col">
+          <form (submit)='createRating($event, cake._id)'>
+              <input type='radio' name='stars' value='1'>
+              <label for='1'> 1 star </label>
+              <input type='radio' name='stars' value='2'>
+              <label for=2> 2 stars </label>
+              <input type='radio' name='stars' value='3'>
+              <label for=3> 3 stars </label>
+              <input type='radio' name='stars' value='4'>
+              <label for=4> 4 stars </label>
+              <input type='radio' name='stars' value='5'>
+              <label for=5> 5 stars </label>
+              <p><textarea name='comment' rows='2'>Type comment here.</textarea></p>
+              <button type='submit'>Rate!</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<app-cake *ngIf='showcake' [cakeToShow]='cakeToShow'></app-cake>
+</div>
+<router-outlet></router-outlet>

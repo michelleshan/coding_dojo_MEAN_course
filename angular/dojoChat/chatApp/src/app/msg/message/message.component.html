@@ -1,0 +1,1 @@
+<span class='username' [ngStyle]="{'background-color': colorDict[message.color]}"><span *ngIf='message.you'>You</span><span *ngIf='!message.you'>{{message.name}}</span></span><span *ngIf='message'>{{message.msg}}</span>

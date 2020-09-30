@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <h1>Baked by {{ cakeToShow.baker }}</h1>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src='{{ cakeToShow.imageURL }}'>
+        </div>
+        <div class="col">
+            <p>Average rating: {{ cakeToShow.avgRating }} stars</p>
+            <div class="individuals" *ngFor='let rating of cakeToShow.ratings'>
+                <p>"{{ rating.comment }}"</p>
+                <p>{{ rating.stars }} stars</p>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,10 @@
+<app-message-list [messages]='messages'></app-message-list>
+<h3 *ngIf='typingMsg'>{{typingMsg}}</h3>
+<ul>
+    <li *ngFor='let tm of typingMsg'>{{tm.name}} is typing...</li>
+</ul>
+<form>
+    <label for='newMessage'>Message: </label>
+    <input (change)='typingStopped()' (keyup)='typing()' type='text' name='newmessage' [(ngModel)]="newMessage">
+    <button (click)='sendMessage()'>Send</button>
+</form>

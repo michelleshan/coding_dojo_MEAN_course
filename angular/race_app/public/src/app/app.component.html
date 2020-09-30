@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+  <div class="jumbotron">
+      <h1 class="display-1">Dallas Virtual Racing Club</h1>
+      <p class="lead">Welcome to virtual races!</p>
+      <hr class='my-4'>
+      <p>Creating an account is not required to participate, but is recommended to keep a record of all races run.</p>
+      <p>A Strava account is required to submit activities.</p>
+    </div>
+  </div>
+  <div class="row" *ngIf='errors'>
+    <ul *ngFor='let message of errorMessages'>
+        <li class='red'>{{ message }}</li>
+    </ul>
+</div>
+  <div class="row">
+    <div class="col-6">
+      <h3>Register</h3>
+      <form (submit)='createUser()'>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input type="text" class="form-control" name='first_name' [(ngModel)]='newUser.first_name'/>
+        </div>
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input type="text" class="form-control" name='last_name' [(ngModel)]='newUser.last_name'/>
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" name='email' aria-describedby="emailHelp" [(ngModel)]='newUser.email'/>
+          <small id="emailHelp" class="form-text text-muted">Your email address is only used for log-in purposes.</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" name='password' [(ngModel)]='newUser.password'/>
+        </div>
+        <div class="form-group">
+          <label for="confirm_password">Confirm password</label>
+          <input type="password" class="form-control" name='confirm_password' [(ngModel)]='newUser.confirm_password'>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="col-6">
+      <h3>Log In</h3>
+      <form (submit)='logIn()'>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" (ngModel)='user.email'>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" (ngModel)='user.password'>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <p span class='noAcct'>Click <a [routerLink]="['/dashboard']">here</a> to proceed without an account.</p>
+    </div>
+  </div>
+  <div class="row">
+    <p span class='footer'>Created by Michelle Han</p>
+  </div>
+</div>
+<router-outlet></router-outlet>

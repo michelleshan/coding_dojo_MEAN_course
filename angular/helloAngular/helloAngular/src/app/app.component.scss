@@ -1,0 +1,45 @@
+.container{
+    padding: 20px 20px;
+    border: 5px solid orange;
+    border-radius: 10px;
+    margin: 10px auto;
+    font-family: sans-serif;
+    input{
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+    button{
+        // color: white;
+        padding: 5px 5px;
+        border-radius: 5px;
+    }
+}
+
+.row{
+    display: block;
+    // border: 1px dotted red;
+}
+
+.col{
+    display: inline-block;
+    // border: 1px solid cornflowerblue;
+    vertical-align: top;
+    margin: 20px 20px;
+}
+
+form{
+    p {
+        label{
+        background-color: rgb(218, 218, 218);
+        }
+    }
+    button{
+        background: linear-gradient(to bottom, #bcc4ce 0%,#9099a0 36%,#394b55 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcc4ce', endColorstr='#394b55',GradientType=0 ); /* IE6-9 */
+    }
+}
+
+.listbox{
+    background: rgb(235, 227, 236);
+    margin: 10px;
+}

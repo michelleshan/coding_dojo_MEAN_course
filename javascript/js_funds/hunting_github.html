@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunting Github</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <button class ='clickity' type='submit'>Click Me!</button>
+    <div class='display'>
+    </div>
+    <script>
+        $('.clickity').click(function(){
+            $.get("https://api.github.com/users/michelleshan",displayName)
+        function displayName(data){
+            $('.display').text(data.name);
+            console.log(data);
+        }
+        })
+    </script>
+</body>
+</html>

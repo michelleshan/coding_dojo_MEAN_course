@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <h1>Favorite Authors</h1>
+    </div>
+    <div class="row">
+        <a href='/'>Home</a>
+        <p>Add a new author:</p>
+    </div>
+    <div class="row">
+        <form (submit)='onSubmit()'>
+            <p><label for='name'>Name: </label></p>
+            <p><input type='text' name='name' [(ngModel)]='newAuthor.name'/></p>
+            <button type='submit'>Submit</button>
+        </form>
+    </div>
+</div>

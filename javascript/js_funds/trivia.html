@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel='stylesheet' href='trivia.css'>
+</head>
+<body>
+    <div class='container'>
+        <div class='header'>
+            <div class='row'>
+                <div class='col'>
+                    <a class='refresh' href=''>Continue with new questions</a>
+                        <h3>Geography</h3>
+                </div>
+                <div class='col'>
+                    <h1>Trivia Night</h1>
+                    <h3>Entertainment</h3>
+                </div>
+                <div class='col'>
+                    <h1>300 points</h1>
+                    <h3>Science</h3>
+                </div>
+            </div>
+        </div>
+        <div class='main'>
+            <div class='row'>
+                <div class='col' id='1'>
+                    <p>100</p>
+                </div>
+                <div class='col' id='2'>
+                    <p>100</p>
+                </div>
+                <div class='col' id='3'>
+                    <p>100</p>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>200</p>
+                </div>
+                <div class='col'>
+                    <p>200</p>   
+                </div>
+                <div class='col'>
+                    <p>200</p>
+                </div>
+            </div>
+            <div class='row'>
+                <div class='col'>
+                    <p>300</p>
+                </div>
+                <div class='col'>
+                    <p>300</p>
+                </div>
+                <div class='col'>
+                    <p>300</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            console.log('Ready!')
+            alert('Ready to play?')
+            $.get('https://opentdb.com/api.php?amount=5&category=12&difficulty=medium&type=multiple', function(data){
+                console.log(data);
+                $('.main .col').click(function(){
+                    $(this).show()
+
+
+                    for (let res of data.results){
+                        console.log(res)
+                        $(this).html(res.question)
+                    }
+                })
+            })
+        });
+
+
+    </script>
+</body>
+</html>

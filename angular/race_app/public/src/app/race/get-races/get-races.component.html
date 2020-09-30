@@ -1,0 +1,53 @@
+<div class="container">
+    <div class="row">
+        <h1>Welcome, {{ user.first_name }}</h1>
+    </div>
+    <div class="row">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/calendar']">Calendar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/user',user._id]">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h2>Past Races</h2>
+            <table>
+                <thead>
+                    <th>Date</th>
+                    <th>Race</th>
+                </thead>
+                <tr *ngFor='let race of races'>
+                    <td>{{ race.date }}</td>
+                    <td><span [routerLink]="['/race',race._id]">{{ race.race }}</span></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+            <h2>Upcoming Races</h2>
+            <table>
+                <thead>
+                    <th>Date</th>
+                    <th>Race</th>
+                </thead>
+                <tr *ngFor='let race of races'>
+                    <td>{{ race.date }}</td>
+                    <td><span [routerLink]="['/race',race._id]">{{ race.race }}</span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

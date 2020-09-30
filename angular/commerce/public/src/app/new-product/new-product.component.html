@@ -1,0 +1,26 @@
+<div class="subcontainer">
+    <div class="row">
+        <h1>New Product</h1>
+    </div>
+    <div class="row" *ngIf='creationErrors'>
+        <ul *ngFor='let message of errorMessages'>
+            <li class='purple'>Error: {{ message }}</li>
+        </ul>
+    </div>
+    <div class="row">
+        <form (submit)='createProduct()'>
+            <div class="col" id='labels'>
+                <p><label for='name'>Name</label></p>
+                <p><label for='quantity'>Qty</label></p>
+                <p><label for='price'>Price</label></p>
+            </div>
+            <div class="col" id='inputs'>
+                <p><input type='text' name='name' [(ngModel)]='newProduct.name'/></p>
+                <p><input type='text' name='quantity' [(ngModel)]='newProduct.quantity'/></p>
+                <p><input type='text' name='price' [(ngModel)]='newProduct.price'/></p>
+                <a href='/' class='backbutton'>RESET</a>
+                <button class='create' type='submit'>CREATE</button>
+            </div>
+        </form>
+    </div>
+</div>

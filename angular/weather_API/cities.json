@@ -1,0 +1,31 @@
+API key: 'b66157ea785fccf267352db1d8921fd8' 
+{
+    "id": 4684888,
+    "name": "Dallas",
+    "state": "TX",
+  },
+  {
+    "id": 5809844,
+    "name": "Seattle",
+    "state": "WA",
+  },
+  {
+    "id": 4887398,
+    "name": "Chicago",
+    "state": "IL",
+  },
+  {
+    "id": 5392171,
+    "name": "San Jose",
+    "state": "CA",
+  },
+  {
+    "id": 5331836,
+    "name": "Burbank",
+    "state": "CA",
+  },
+  {
+    "id": 4140963,
+    "name": "Washington, D.C.",
+    "state": "DC",
+  },
